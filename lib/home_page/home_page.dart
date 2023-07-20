@@ -33,7 +33,7 @@ class HomePage extends StatelessWidget {
         children: [
           SafeArea(
             child: Container(
-              margin: const EdgeInsets.only(bottom: 20),
+              margin:  EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height/43.37),
               width: double.maxFinite,
               height: MediaQuery.sizeOf(context).height * 0.1,
               color: const Color(0xFFdfe0df),
@@ -44,31 +44,31 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Container(
-            margin: const EdgeInsets.only(bottom: 20),
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            margin: EdgeInsets.only(bottom: MediaQuery.sizeOf(context).height/43.37),
+            padding:  EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width/41.14),
             child: SearchBar(
-              padding: const MaterialStatePropertyAll(
-                  EdgeInsets.symmetric(horizontal: 24)),
+              padding:  MaterialStatePropertyAll(
+                  EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width/17.14)),
               leading: Container(
-                    margin: const EdgeInsets.only(right: 30),
-                      child: const Image(
-                        image: AssetImage('assets/images/magnifier 1.png'),
-                        height: 20,
+                    margin:  EdgeInsets.only(right: MediaQuery.sizeOf(context).width/13.71),
+                      child:  Image(
+                        image: const AssetImage('assets/images/magnifier 1.png'),
+                        height: MediaQuery.sizeOf(context).height/43.37,
                         fit: BoxFit.cover,
                       ),
                   ),
               hintText: 'Search by pet type',
-              hintStyle: const MaterialStatePropertyAll(TextStyle(
+              hintStyle:  MaterialStatePropertyAll(TextStyle(
                 fontFamily: 'BalsamiqSans',
                 fontWeight: FontWeight.w400,
-                color: Color(0xFFacacac),
-                fontSize: 21,
+                color: const Color(0xFFacacac),
+                fontSize: MediaQuery.sizeOf(context).height/41.3,
               )),
-              textStyle: const MaterialStatePropertyAll(TextStyle(
+              textStyle:  MaterialStatePropertyAll(TextStyle(
                 fontFamily: 'BalsamiqSans',
                 fontWeight: FontWeight.w400,
-                color: Color(0xFFacacac),
-                fontSize: 21,
+                color: const Color(0xFFacacac),
+                fontSize: MediaQuery.sizeOf(context).height/41.3,
               )
               ),
               shadowColor: const MaterialStatePropertyAll(Colors.transparent),
@@ -80,17 +80,24 @@ class HomePage extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              margin: const EdgeInsets.only(bottom: 30,left:16,right: 16 ),
-              padding: const EdgeInsets.all(14),
+              margin:  EdgeInsets.only(
+                  bottom: MediaQuery.sizeOf(context).height/28.9,
+                  left:MediaQuery.sizeOf(context).width/25.7,
+                  right: MediaQuery.sizeOf(context).width/25.7,
+              ),
+              padding:  EdgeInsets.symmetric(
+                  horizontal: MediaQuery.sizeOf(context).width/29.4,
+                  vertical: MediaQuery.sizeOf(context).height/57.8,
+              ),
               decoration: const BoxDecoration(color:Color(0x80DFE0DF) ),
               child: MediaQuery.removePadding(
                 removeTop: true,
                 context: context,
                 child: ListView.separated(
                     itemBuilder: (context,index){
-                      return petItem(petList[index]);
+                      return petItem(petList[index],context);
                     },
-                    separatorBuilder:(context,index)=> const SizedBox(height: 15,),
+                    separatorBuilder:(context,index)=>  SizedBox(height: MediaQuery.sizeOf(context).height/57.83,),
                     itemCount: petList.length,
                 ),
               ),
@@ -101,10 +108,14 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-  Widget petItem(Pet pet)=>Container(
-    padding: const EdgeInsets.only(left: 10,top: 5 ,bottom: 5),
+  Widget petItem(Pet pet,context)=>Container(
+    padding:  EdgeInsets.only(
+        left: MediaQuery.sizeOf(context).width/41.14,
+        top: MediaQuery.sizeOf(context).height/173.5 ,
+        bottom: MediaQuery.sizeOf(context).height/173.5,
+    ),
     clipBehavior: Clip.antiAliasWithSaveLayer,
-    height: 130,
+    height: MediaQuery.sizeOf(context).height/6.673,
     width: double.maxFinite,
     decoration: BoxDecoration(
       color: Colors.white,
@@ -113,28 +124,34 @@ class HomePage extends StatelessWidget {
     child: Row(
       children: [
         Container(
-          width: 110,
+          width: MediaQuery.sizeOf(context).width/3.74,
           margin: const EdgeInsets.only(),
           decoration: BoxDecoration(
             image: DecorationImage(image: NetworkImage(pet.petPic),fit: BoxFit.fitHeight)
           ),
         ),
-        const SizedBox(width: 5,),
+        SizedBox(width: MediaQuery.sizeOf(context).width/82.3,),
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BigText(text: pet.petCategory,size: 26,overflow: TextOverflow.ellipsis),
-            SmallText(text: pet.petType),
+            BigText(
+                text: pet.petCategory,
+                size: 26,
+                overflow: TextOverflow.ellipsis,
+            ),
+            SmallText(
+                text: pet.petType,
+            ),
             Row(
               children: [
                 Image.asset(
                   'assets/images/pawprintImg.png',
-                  width: 35,
-                  height: 37,
+                  width: MediaQuery.sizeOf(context).width/11.75,
+                  height: MediaQuery.sizeOf(context).height/23.4,
                   fit: BoxFit.cover,
                 ),
-                const SizedBox(width: 10,),
+                SizedBox(width: MediaQuery.sizeOf(context).height/86.74,),
                 SmallText(text: 'Pet Love: ${pet.petLoveCount}',color: const Color(0xFFDB6400),)
               ],
             )

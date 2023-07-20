@@ -7,7 +7,7 @@ class BigText extends StatelessWidget {
   final TextOverflow overflow;
 
   const BigText({
-    super.key,this.size = 35,
+    super.key,this.size = 0,
     required this.text,
     this.color = Colors.black,
     this.overflow=TextOverflow.ellipsis,
@@ -21,7 +21,7 @@ class BigText extends StatelessWidget {
       maxLines: 1,
       style: TextStyle(
           color: color,
-          fontSize: size ,
+          fontSize: size==0? MediaQuery.sizeOf(context).height/24.8: (MediaQuery.sizeOf(context).height/24.8)*size/35,
           fontWeight: FontWeight.w400,
           fontFamily: 'BalsamiqSans'
       ),
